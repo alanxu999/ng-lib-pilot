@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{},"exports":[{"from":"./services","export":["TickTockService"]},{"from":"./components","export":["TickTockComponent"]},{"from":"./tick-tock.module","export":["TickTockModule"]},{"from":"./test.module","export":["TestModule"]},{"from":"./lib"}]}]

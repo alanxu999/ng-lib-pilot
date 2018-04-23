@@ -1,0 +1,749 @@
+/*
+   This SCSS selectively overwrittes any default Angular Material Style CSS to
+   match CPPIB approved colors, fonts and styles.
+   It requires importing first a default template to overwrite it.
+
+   @autor: Arek Klauza (aklauza@cppib.com)
+*/
+
+// Imports base angular material css styles
+@import '~@angular/material/theming';
+@include mat-core();
+
+// Define CPPIB´s green and golden palettes
+$mat-cppib: (
+    100 : #e2eced,
+    200 : #b8cfd1,
+    300 : #88afb3,
+    400 : #588e95,
+    500 : #35767e,
+    600 : #115e67,
+    700 : #0f565f,
+    800 : #0c4c54,
+    900 : #0a424a,
+    contrast: (
+        50 : $black-87-opacity,
+        100 : $black-87-opacity,
+        200 : $black-87-opacity,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$mat-cppib-gold: (
+    50 : #f6f4ed,
+    100 : #e8e3d2,
+    200 : #d9d1b4,
+    300 : #cabf96,
+    400 : #beb180,
+    500 : #b3a369,
+    600 : #ac9b61,
+    700 : #a39156,
+    800 : #9a884c,
+    900 : #8b773b,
+    contrast: (
+        50 : $black-87-opacity,
+        100 : $black-87-opacity,
+        200 : $black-87-opacity,
+        300 : $black-87-opacity,
+        400 : $black-87-opacity,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$mat-red: (
+   50: #ffebee,
+   100: #ffcdd2,
+   200: #ef9a9a,
+   300: #e57373,
+   400: #ef5350,
+   500: #f44336,
+   600: #e53935,
+   700: #d32f2f,
+   800: #c62828,
+   900: #b71c1c,
+   contrast: (
+     50: $black-87-opacity,
+     100: $black-87-opacity,
+     200: $black-87-opacity,
+     300: $black-87-opacity,
+     400: $black-87-opacity,
+     500: white,
+     600: white,
+     700: white,
+     800: $white-87-opacity,
+     900: $white-87-opacity,
+   )
+ );
+
+ $mat-light-green: (
+    50: #f1f8e9,
+    100: #dcedc8,
+    200: #c5e1a5,
+    300: #aed581,
+    400: #9ccc65,
+    500: #8bc34a,
+    600: #7cb342,
+    700: #689f38,
+    800: #558b2f,
+    900: #33691e,
+    A100: #ccff90,
+    A200: #b2ff59,
+    A400: #76ff03,
+    A700: #64dd17,
+    contrast: (
+      50: $black-87-opacity,
+      100: $black-87-opacity,
+      200: $black-87-opacity,
+      300: $black-87-opacity,
+      400: $black-87-opacity,
+      500: $black-87-opacity,
+      600: $black-87-opacity,
+      700: white,
+      800: white,
+      900: white,
+      A100: $black-87-opacity,
+      A200: $black-87-opacity,
+      A400: $black-87-opacity,
+      A700: $black-87-opacity,
+    )
+  );
+
+$mat-grey: (
+  0: #ffffff,
+  50: #fafafa,
+  100: #f5f5f5,
+  200: #eeeeee,
+  300: #e0e0e0,
+  400: #bdbdbd,
+  500: #9e9e9e,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
+  contrast: (
+    0: $black-87-opacity,
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: $black-87-opacity,
+    600: $white-87-opacity,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+  )
+);
+
+
+// Create the theme object (a Sass map containing all of the palettes).
+$cppib-primary: mat-palette($mat-cppib);
+$cppib-gold: mat-palette($mat-cppib-gold);
+$cppib-app-warn: mat-palette($mat-red);
+$cppib-green: mat-palette($mat-light-green);
+$cppib-greys: mat-palette($mat-grey);
+
+$cppib-app-theme: mat-light-theme($cppib-primary, $cppib-gold, $cppib-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($cppib-app-theme);
+
+
+
+
+/*********************************/
+/* Fonts definitions and imports */
+/*********************************/
+
+/* CPPIB headings font */
+@font-face {
+   font-family: 'Gill Sans';
+   src: url('/assets/fonts/gillsans-light.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+
+/* Regular material font */
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Light), url("/assets/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("/assets/fonts/roboto/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Regular), url("/assets/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("/assets/fonts/roboto/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Roboto";
+  src: local(Roboto Bold), url("/assets/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("/assets/fonts/roboto/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+
+html {
+   background: #f3f3f3;
+   font-weight: 300;
+   line-height: 1.75;
+   font-family: "Roboto", sans-serif;
+   color: rgba(0, 0, 0, 0.80);
+   font-size: 15px;
+
+}
+
+p {
+   margin-top: 0;
+   text-align: justify;
+}
+
+
+
+
+
+/*********************************/
+/* Headers                       */
+/*********************************/
+
+h1, h2, h3, h4, h5, h6,
+.mat-dialog-title {
+   font-family: 'Gill Sans', sans-serif;
+   color: #115e67;
+   text-align: left;
+   line-height: 125%;
+   margin-bottom: 1rem;
+   font-weight: normal;
+   white-space: nowrap;
+   display: table;
+}
+
+h1 { font-size: 2.2rem; margin-top: 3.2rem; color: #0c4c54;  }
+h2 { font-size: 1.8rem; margin-top: 2.8rem; color: #0f565f; }
+h3 { font-size: 1.5rem; margin-top: 2.5rem; color: #115e67; }
+h4 { font-size: 1.2rem; margin-top: 2.0rem; color: #35767e; }
+h5 { font-size: 1.0rem; margin-top: 1.5rem; color: #588e95; }
+h6 { font-size: 1.0rem; margin-top: 1.0rem; color: #88afb3; }
+
+h1 > span, h2 > span, h3 > span, h4 > span, h5 > span, h6 > span {
+   display: table-cell;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   vertical-align: middle;
+}
+h1 > span:before, h2 > span:before, h3 > span:before, h4 > span:before, h5 > span:before, h6 > span:before {
+   content: '';
+   width: 100%;
+   max-width: 30px;
+   height: 3px;
+   display: block;
+   float: left;
+   margin: 0 0 0 15px;
+   padding: 0;
+   overflow: hidden;
+   background: #b3a369 !important
+}
+h1 > span:after, h2 > span:after, h3 > span:after, h4 > span:after, h5 > span:after, h6 > span:after {
+   content: '';
+   height: 1px;
+   display: block;
+   width: 100%;
+   margin: 1px 0 0 20px;
+   background: #EBEBEB !important;
+}
+
+
+
+
+/*********************************/
+/* Custom resets                 */
+/*********************************/
+
+/* Disable Chrome autocomplete yellow BG */
+input:-webkit-autofill {
+   -webkit-box-shadow: 0 0 0 30px white inset;
+   /* Disable Chrome touchscreen highlight */
+}
+* {
+   -webkit-tap-highlight-color: rgba(0,0,0,0);
+   -webkit-tap-highlight-color: transparent;
+}
+
+/* CUSTOM SCROLLBAR FOR DESKTOP ONLY */
+@media only screen and (min-width: 960px) {
+   ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+      background-color: #fff;
+   }
+   ::-webkit-scrollbar {
+      width: 6px;
+      background-color: #F5F5F5;
+   }
+   ::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: #777;
+   }
+}
+
+
+
+
+
+
+/*********************************/
+/* Common helpers                */
+/*********************************/
+
+.right {
+   float: right !important;
+}
+.left {
+   float: left !important;
+}
+
+.text-right    { text-align: right !important; }
+.text-center   { text-align: center !important; }
+.text-left     { text-align: left !important; }
+.text-justify  { text-align: justify !important; }
+
+.full-width, .fullWidth {
+   width: 100%;
+}
+
+
+em {
+   font-style: italic;
+}
+strong, .bold, b {
+   font-weight: bold;
+}
+small {
+   font-size: 75%;
+}
+
+code {
+   display: block;
+   font-size: 0.85rem;
+   color: #e8ac3b;
+   margin: 20px 0;
+   background: #333;
+   padding: 10px;
+   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8);
+   border-top-right-radius: 8px;
+   border-bottom-left-radius: 8px;
+}
+
+label {
+   font-size: 0.85rem;
+   line-height: normal;
+   font-weight: normal;
+   opacity: 0.8;
+   display: block;
+}
+
+
+
+
+/*********************************/
+/* Color helpers                 */
+/*********************************/
+
+.primary, .secondary, .gold, .red, .green, .grey   { color: white; }
+.lighter                                           { color: rgba(0, 0, 0, 0.80); }
+.bg.primary.darker                           { background: mat-color($cppib-primary, 900); }
+.bg.primary                                  { background: mat-color($cppib-primary, 600); }
+.bg.primary.lighter                          { background: mat-color($cppib-primary, 400); }
+.bg.secondary.darker, .bg.gold.darker        { background: mat-color($cppib-gold, 800); }
+.bg.secondary, .bg.gold                      { background: mat-color($cppib-gold, 500); }
+.bg.secondary.lighter, .bg.gold.lighter      { background: mat-color($cppib-gold, 300); }
+.bg.grey.darker                              { background: mat-color($cppib-greys, 500); }
+.bg.grey                                     { background: mat-color($cppib-greys, 400); }
+.bg.grey.lighter                             { background: mat-color($cppib-greys, 300); }
+.bg.red.darker                               { background: mat-color($cppib-app-warn, 900); }
+.bg.red                                      { background: mat-color($cppib-app-warn, 700); }
+.bg.red.lighter                              { background: mat-color($cppib-app-warn, 200); }
+.bg.green.darker                             { background: mat-color($cppib-green, 800); }
+.bg.green                                    { background: mat-color($cppib-green, 600); }
+.bg.green.lighter                            { background: mat-color($cppib-green, 200); }
+
+.text.primary.darker                         { color: mat-color($cppib-primary, 700); }
+.text.primary                                { color: mat-color($cppib-primary, 500); }
+.text.primary.lighter                        { color: mat-color($cppib-primary, 300); }
+.text.secondary.darker, .text.gold.darker    { color: mat-color($cppib-gold, 700); }
+.text.secondary, .text.gold                  { color: mat-color($cppib-gold, 500); }
+.text.secondary.lighter, .text.gold.lighter  { color: mat-color($cppib-gold, 300); }
+.text.grey.darker                            { color: mat-color($cppib-greys, 700); }
+.text.grey                                   { color: mat-color($cppib-greys, 500); }
+.text.grey.lighter                           { color: mat-color($cppib-greys, 300); }
+.text.red.darker                             { color: mat-color($cppib-app-warn, 900); }
+.text.red                                    { color: mat-color($cppib-app-warn, 700); }
+.text.red.lighter                            { color: mat-color($cppib-app-warn, 200); }
+.text.green.darker                           { color: mat-color($cppib-green, 900); }
+.text.green                                  { color: mat-color($cppib-green, 700); }
+.text.green.lighter                          { color: mat-color($cppib-green, 200); }
+
+
+
+/*********************************/
+/* Links                         */
+/*********************************/
+
+a, a:visited {
+   font-weight: normal;
+   color: mat-color($cppib-primary);
+   text-decoration: none;
+   outline: none;
+}
+a:hover, a:focus, a:active {
+   color: mat-color($cppib-primary, 600);
+}
+a.secondary,
+a.gold
+a.secondary:visited,
+a.gold:visited {
+   background: none;
+   color: mat-color($cppib-gold);
+}
+a.secondary:hover,
+a.secondary:focus
+a.secondary:visited,
+a.gold:hover,
+a.gold:focus,
+a.gold:visited {
+   color: mat-color($cppib-gold, 700);
+}
+a[mat-button]:hover,
+a[mat-fab]:hover,
+a[mat-button]:active,
+a[mat-fab]:active,
+a[mat-button]:focus,
+a[mat-fab]:focus {
+   color: inherit;
+}
+
+
+
+
+
+/*********************************/
+/* Buttons and Fabs              */
+/*********************************/
+
+body .mat-button,
+body .mat-raised-button {
+   font-family: 'Gill Sans', sans-serif;
+	font-size: 1.1rem;
+   font-weight: normal;
+   text-transform: uppercase;
+   padding: 0 2rem;
+   padding-top: 1px;
+   line-height: 36px;
+}
+body .mat-button .mat-icon,
+body .mat-raised-button .mat-icon {
+   font-size: 24px;
+   line-height: inherit;
+   vertical-align: top;
+   margin-right: 10px;
+   height: initial;
+   width: initial;
+}
+body .mat-button span,
+body .mat-raised-button span {
+   line-height: 34px;
+}
+body .mat-raised-button,
+body .mat-fab.mat-accent,
+body .mat-mini-fab.mat-accent {
+   background-color: mat-color($cppib-primary);
+   color: white;
+}
+body .mat-raised-button.mat-gold,
+body .mat-fab.mat-gold,
+body .mat-mini-fab.mat-gold {
+   background-color: mat-color($cppib-gold);
+   color: white;
+}
+body .mat-raised-button.mat-grey,
+body .mat-fab.mat-grey,
+body .mat-mini-fab.mat-grey {
+   background-color: mat-color($cppib-greys, 400);
+   color: white;
+}
+body .mat-raised-button.mat-green,
+body .mat-fab.mat-green,
+body .mat-mini-fab.mat-green {
+   background-color: mat-color($cppib-green, 600);
+   color: white;
+}
+body .mat-raised-button.mat-red,
+body .mat-fab.mat-red,
+body .mat-mini-fab.mat-red {
+   background-color: mat-color($cppib-app-warn);
+   color: white;
+}
+
+/* Buttons Hover */
+.mat-icon-button:hover {
+   background-color: #e0e0e0;
+}
+button.mat-icon-button:hover:before,
+button.mat-fab:hover:before,
+button.mat-mini-fab:hover:before,
+button.mat-raised-button:hover:before {
+   background: rgba(255,255,255, 0.10);
+   content: '';
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+button.mat-icon-button:hover:before,
+button.mat-fab:hover:before,
+button.mat-mini-fab:hover:before {
+   border-radius: 50%;
+}
+
+/* Ripple effect for all buttons white */
+body .mat-raised-button .mat-ripple-element,
+body .mat-fab .mat-ripple-element,
+body .mat-mini-fab .mat-ripple-element {
+	background-color: rgba(255, 255, 255, 0.2)
+}
+
+
+/* Rotate animations for Fabs */
+body .mat-icon-button > span.mat-button-wrapper,
+body .mat-fab > span.mat-button-wrapper,
+body .mat-mini-fab > span.mat-button-wrapper,
+body .mat-icon-button > span.mat-button-wrapper {
+   transition: transform 0.2s ease-in;
+   line-height: 8px;
+   display: block;
+}
+body .mat-icon-button.animate90:hover > span,
+body .mat-fab.animate90:hover > span,
+body .mat-mini-fab.animate90:hover > span,
+body .mat-icon-button.animate90:hover > span {
+   transform: rotate(90deg);
+}
+body .mat-icon-button.animate360:hover > span.mat-button-wrapper,
+body .mat-fab.animate360:hover > span,
+body .mat-mini-fab.animate360:hover > span,
+body .mat-icon-button.animate360:hover > span {
+   transform: rotate(360deg);
+   transition: transform 0.35s ease-in;
+}
+
+
+body .fixed-fab,
+body .fixed-fab2 {
+   position: fixed;
+   right: 30px;
+   bottom: 30px;
+}
+
+body .fixed-fab2 {
+   margin-bottom: 66px;
+}
+
+
+
+
+
+/*********************************/
+/* Tables                        */
+/*********************************/
+
+table {
+   width: 100%;
+   text-align: right;
+   border-collapse: collapse;
+   border-spacing: 0;
+   margin: 20px 0;
+}
+table thead tr,
+table tfoot tr {
+   font-size: 12px;
+   color: #EEE;
+   background: #3e4e50;
+   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+}
+table tfoot tr {
+   background: #6b7779;
+   border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+table tbody tr {
+   border-top: 1px solid #EEE;
+   background: #FFF;
+}
+table tbody tr:nth-child(even) {
+   background: #f3f3f3;
+}
+table td {
+   padding: 3px;
+}
+table tr td:first-child,
+table tr td.first-child {
+   padding-left: 20px;
+}
+table tr td:last-child,
+table tr td.last-child {
+   padding-right: 20px;
+}
+
+table mat-icon {
+   vertical-align: middle;
+}
+
+.mat-sort-header-arrow {
+   margin: 3px 6px 0 0 !important;
+}
+
+/*style for Datepicker*/
+mat-datepicker-content.mat-datepicker-content .mat-calendar {
+  width: 320px;
+  height:390px;
+}
+
+table.mat-calendar-table thead tr {
+  background: inherit;
+  border: none;
+  color: inherit;
+  text-shadow: none;
+}
+table.mat-calendar-table tbody tr:first-child{
+  border: none;
+}
+
+
+
+/*********************************/
+/* Form elements                 */
+/*********************************/
+
+mat-select .mat-select-trigger {
+   height: 40px;
+}
+
+mat-input-container mat-icon {
+   vertical-align: middle;
+}
+
+
+
+
+
+/*********************************/
+/* Cards                         */
+/*********************************/
+
+mat-card.mat-card {
+   margin-bottom: 20px;
+}
+
+mat-card .mat-card-content > :first-child {
+   margin-top: 10px;
+}
+mat-card .mat-card-actions {
+   border-top: 1px solid #EEE;
+   text-align: right;
+}
+mat-card .mat-card-actions .mat-button {
+   color: mat-color($cppib-gold);
+}
+mat-card .more-options {
+   position: absolute;
+   right: 20px;
+   top: 20px;
+   background-color: white;
+}
+
+mat-card h1, mat-card h2, mat-card h3, mat-card h4, mat-card h5, mat-card h6 {
+   margin-top: 1rem;
+}
+
+
+
+
+/*********************************/
+/* Lists                         */
+/*********************************/
+
+mat-list {
+   border: 1px solid #e0e0e0;
+   border-radius: 2px;
+   background: white;
+   padding-top: 0 !important;
+   margin-bottom: 10px;
+}
+mat-list > mat-list-item {
+   border-bottom: 1px solid #e0e0e0;
+}
+mat-list > mat-list-item:last-child {
+   border-bottom: none;
+}
+
+mat-list.mat-list .mat-list-item .mat-list-item-content,
+mat-list.mat-nav-list .mat-list-item .mat-list-item-content {
+   padding: 5px 16px;
+   height: 100% !important;
+}
+
+.bg {
+  min-height: 100%;
+  width: 260px;
+  position: relative;
+  overflow-x: hidden;
+  left: 0;
+  transition: 0.2s ease;
+}
+.bg:before {
+  background: url(/assets/img/cppib_logo_dark.png) no-repeat bottom right;
+  content: '';
+  width: 100%;
+  height: 650px;
+  position: absolute;
+  bottom: 0;
+  opacity: 0.03;
+  background-position-x: -170px;
+}
+
+
+/*********************************/
+/* Dialogs                       */
+/*********************************/
+
+.mat-dialog-title {
+   font-family: 'Gill Sans', sans-serif;
+}
+
+.mat-dialog-actions {
+   min-width: 400px;
+   width: auto;
+   display: block !important;
+   text-align: right;
+   border-top: 1px solid #EEE;
+   margin-top: 20px;
+}
+@media only screen and (max-width : 992px) {
+   .mat-dialog-actions {
+      min-width: auto;
+   }
+}
+
+
+
