@@ -1,1 +1,0 @@
-[{"__symbolic":"module","version":4,"metadata":{"NavigationConfig":{"__symbolic":"interface"},"NAVIGATION_CONFIG_TOKEN":{"__symbolic":"new","expression":{"__symbolic":"reference","module":"@angular/core","name":"InjectionToken","line":11,"character":77},"arguments":["NAVIGATION_CONFIG_TOKEN"]}}}]
