@@ -6,6 +6,8 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const config = {
   devtool: 'source-map',
   entry: {
+    "normalize.css": path.resolve(__dirname, 'normalize.css'),
+    "tilt.theme": path.resolve(__dirname, 'lib', 'cppib.theme.dist.css'),
     polyfills: path.resolve(__dirname, 'src', 'polyfills.browser.ts'),
     main: path.resolve(__dirname, 'src', 'main-jit.ts')
   },
@@ -14,34 +16,40 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist', 'jit'),
-    filename: '[name].js'
+    filename: '[name].dist.js'
   },
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: [
-          {
-            loader: 'awesome-typescript-loader',
-            options: {
-              configFileName: path.resolve(__dirname, 'tsconfig.json')
-            }
-          }, 
-          {
-            loader: 'angular2-template-loader'
+    {
+      test: /\.css$/,
+      loaders: ['style-loader', 'css-loader'],
+      include: [path.resolve(__dirname, 'lib'), path.resolve(__dirname, 'normalize.css')]
+    },
+    {
+      test: /\.ts$/,
+      use: [
+        {
+          loader: 'awesome-typescript-loader',
+          options: {
+            configFileName: path.resolve(__dirname, 'tsconfig.json')
           }
-        ]
-      }, 
+        }, 
+        {
+          loader: 'angular2-template-loader'
+        }
+      ]
+    }, 
       /* Embed files. */
     { 
       test: /\.(html|css)$/, 
       loader: 'raw-loader',
-      exclude: /\.async\.(html|css)$/
+      exclude: [/\.async\.(html|css)$/, path.resolve(__dirname, 'lib'), path.resolve(__dirname, 'normalize.css')]
     },
     /* Async loading. */
     {
       test: /\.async\.(html|css)$/, 
-      loaders: ['file?name=[name].[hash].[ext]', 'extract']
+      loaders: ['file?name=[name].[hash].[ext]', 'extract'],
+      exclude: [path.resolve(__dirname, 'lib'), path.resolve(__dirname, 'normalize.css')]
     }
     ]
   },

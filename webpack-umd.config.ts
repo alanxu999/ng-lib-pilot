@@ -10,10 +10,11 @@ export default {
   entry: {
     'index.umd': './src/index.ts',
     'index.umd.min': './src/index.ts',
+    'tilt.theme': './src/style/cppib.theme.scss'
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: '[name].dist.js',
     libraryTarget: 'umd',
     library: 'ngx-tilt-common'
   },
@@ -52,19 +53,37 @@ export default {
       },
 
       {
-        test: /\.css$/,
-        use: ['to-string-loader', 'css-loader']
-      },
-
-      {
-        test: /\.scss$/,
-        use: ['to-string-loader', 'css-loader', 'sass-loader']
+        test: /\.(css|scss)$/,
+        use: ['to-string-loader', 'css-loader', 'sass-loader'],
+        exclude: [path.resolve(__dirname, 'src', 'style')]
       },
 
       {
         test: /\.html$/,
         use: 'raw-loader'
-      }
+      },
+
+      {
+        test: /\.(css|scss)$/,
+        loaders: [
+            {
+                loader: "file-loader",
+                options: {
+                  name: "[name].dist.css",
+              },
+            },
+            {
+                loader: "extract-loader",
+            },
+            {
+                loader: "css-loader",
+            },
+            {
+              loader: "sass-loader",
+            }
+        ],
+        include: [path.resolve(__dirname, 'src', 'style')]
+    },
     ]
   },
   plugins: [
