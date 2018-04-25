@@ -99,7 +99,6 @@ export const NAVIGATION_CONFIG: NavigationConfig = {
     ],
     imports: [
         AngularMaterialModule,
-        BrowserModule,
         CommonModule,
         RouterModule
         /* LoadingBarHttpClientModule,
@@ -108,18 +107,11 @@ export const NAVIGATION_CONFIG: NavigationConfig = {
         LoadingBarModule */
     ],
     exports: [
-        AngularMaterialModule,
-        BrowserModule,
-        CommonModule,
-        /* LoadingBarHttpClientModule,
-        LoadingBarHttpModule,
-        LoadingBarRouterModule,
-        LoadingBarModule, */
-        RouterModule,
+        /*AngularMaterialModule,*/
         LayoutModule,
         HeaderComponent
     ],
-    providers: [
+/*    providers: [
         {
             provide: NAVIGATION_CONFIG_TOKEN,
             useValue: NAVIGATION_CONFIG
@@ -128,6 +120,6 @@ export const NAVIGATION_CONFIG: NavigationConfig = {
             provide: APPLICATION_CONFIG_TOKEN,
             useValue: APPLICATION_CONFIG
           },
-    ]
+    ]*/
 })
 export class TiltCommonModule {}

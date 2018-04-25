@@ -8,7 +8,7 @@ import { ApplicationConfig, APPLICATION_CONFIG_TOKEN, NavigationConfig, NAVIGATI
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent /*implements OnInit*/ {
   activeLinkIndex = 1;
   ngOnInit(): void { }
 

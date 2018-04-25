@@ -1,13 +1,14 @@
+
 <mat-toolbar class="main-header bg primary" style="z-index: 5;">
   <button (click)="toggleSidenav.emit()" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
   <div class="branding">
-    <!--<div class="logo"></div>-->
+    <div class="logo"></div>
     <img src="/assets/img/cppib_logo@2x.png" style="height: 60px">
   </div>
 
-  <!-- <div fxShow=”true” fxHide.lt-md=”true”> -->
+  <div fxShow=”true” fxHide.lt-md=”true”>
   <button fxHide.lt-md=”true” mat-button class="tilt-nav-dropdown" [matMenuTriggerFor]="navDropdown">Strategic Tilting
     <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
   </button>
@@ -42,8 +43,8 @@
       Asset Mornitor
     </a>
   </nav>
-<!-- </div> -->
-  <div fxFlex></div>
+</div>
+
   <button (click)="fullScreenToggle()" mat-icon-button>
     <mat-icon>fullscreen</mat-icon>
   </button>
